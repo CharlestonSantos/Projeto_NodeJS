@@ -10,9 +10,9 @@ const getAll = async () => {
 const createTask = async (task) => {
   const { title } = task;
   const dateUTC = new Date(Date.now()).toUTCString();
-  const query = 'INSERT INTO tasks(title, status, create_at) VALUES (?, ?, ?)';
+  const query = 'INSERT INTO tasks(title, create_at, status) VALUES (?, ?, ?)';
   const [createdTask] = await connection.execute(query, [title, 'pendente', dateUTC]);
-  return {insertId: createdTask.insertId};
+  return {insertId: createdTask.insertId};  
 };
 
 //Deletar uma tarefa
