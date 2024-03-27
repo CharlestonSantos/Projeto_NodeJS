@@ -1,5 +1,5 @@
 //const { options } = require('../../backend/src/router');
-/*
+
 const tbody = document.querySelector('tbody');
 const addForm = document.querySelector('.add-form');
 const inputTask = document.querySelector('.input-task');
@@ -49,6 +49,7 @@ const updateTask = async (task) => {
     loadTasks();
 }
 
+
 // Formatando a data
 const formatDate = (dateUTC) => {
     const options = { dateStyle: 'short', timeStyle: 'short' };
@@ -71,9 +72,11 @@ const createElement = (tag, innerText = '', innerHtml = '') => {
 
 // criar o select   
 const createSelect = (value) => {
-    const options = `<option value="pendente">pendente</option>
-    <option value='em andamento'>em andamento</option>
-      <option value='concluída'>concluída</option>`;
+    const options = 
+    ` <option value="pendente">pendente</option>,
+      <option value='em andamento'>em andamento</option>,
+      <option value='concluída'>concluída</option>,
+    `;
 
     const select = createElement('select', '', options);
 
@@ -119,7 +122,7 @@ const createRow = (task) => {
     });
 
     editButton.classList.add('btn_action');
-    editButton.classList.add('btn_action');
+    deleteButton.classList.add('btn_action');
 
     deleteButton.addEventListener('click', () => deleteTask(id));
 
@@ -152,20 +155,21 @@ const loadTasks = async () => {
 
 addForm.addEventListener('submit', addTask);
 loadTasks();
-*/
 
 
 
 
 
-// NOVO
-  const fetchTask = async () => {
-  const response = await fetch('http://localhost:3333/tasks')
-  const tasks = await response.json()
-  return tasks;
+
+// bloqueio temporario
+/*
+  const fetchTasks = async () => {
+    const response = await fetch('http://localhost:3333/tasks')
+    const tasks = await response.json()
+    return tasks;
 }
 
-// Função para criar os elementos
+// Função para criar os elementos html
 const createElement = (tag, innerText = '', innerHtml = '') => {
   const element = document.createElement(tag);
 
@@ -178,29 +182,49 @@ const createElement = (tag, innerText = '', innerHtml = '') => {
   return element;
 }
 
+const createSelect = (value) => {
+    const options = `
+      <option value="pendente">pendente</option>
+      <option value="em andamento">em andamento</option>
+      <option value="concluída">concluida</option>
+    `;
+
+    const select = createElement('select', '', options);
+
+    select.value = value;
+
+    return select;
+}
+
 const task = {
   id: 1,
   title: 'novo lançamento',
   create_at: '00 Janeiro 2024',
-  status: pendente
+  status: 'concluida'
 }
 
-const createTask = (tasks) => {
+const createRow = (task) => {
   const { id, title, created_at, status } = task;
 
   const tr = createElement('tr');
   const tdTitle = createElement('td', title);
-  const tdCreateAt = createElement('td', created_at);
-  const tdActions = createElement('td');
+  const tdCreateAt = createElement('td', concluida);
   const tdStatus = createElement('td');
+  const tdActions = createElement('td');
+  
+
+  const select = createSelect();
 
   const editButton = createElement('button', '', '<span class="material-symbols-outlined">edit</span>');
   const deleteButton = createElement('button', '', '<span class="material-symbols-outlined">delete</span>');
-  tr.appendChild(editButton);
-  tbody.appendChild(tr);
+  
+  //tr.appendChild(editButton);
+ // tbody.appendChild(tr);
 
   editButton.classList.add('btn_action');
-  editButton.classList.add('btn_action');
+  deleteButton.classList.add('btn_action');
+
+  tdStatus.appendChild(select);
 
   tdActions.appendChild(editButton);
   tdActions.appendChild(deleteButton);
@@ -212,6 +236,6 @@ const createTask = (tasks) => {
 
   tbody.appendChild(tr);
 }
-createRow(task);
+createRow(task)
 
-
+*/
