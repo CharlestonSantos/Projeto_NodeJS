@@ -92,3 +92,41 @@ body {
     background-color: #069bff;
 
 }
+
+
+/* Estilo da Pagina de tarefas*/
+.page2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    width: 100%;
+    height: 100vh;
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(58,58,194,1) 39%, rgba(0,212,255,1) 100%);
+}
+
+.form_task {
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.titulo-task{
+    position: absolute;
+    left: 41%;
+    top: 12%;     
+    text-align: center;
+    color: #fff;    
+}
+
+.input-task{
+    width:500px;
+    height: 30px;
+}
+.linktask a {
+    color: #ffffff;
+    height: auto;    
+    text-decoration: none;
+}

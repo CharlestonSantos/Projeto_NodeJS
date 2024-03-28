@@ -1,4 +1,5 @@
 //const { options } = require('../../backend/src/router');
+//@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 const tbody = document.querySelector('tbody');
 const addForm = document.querySelector('.add-form');
@@ -72,10 +73,10 @@ const createElement = (tag, innerText = '', innerHtml = '') => {
 
 // criar o select   
 const createSelect = (value) => {
-    const options = 
-    ` <option value="pendente">pendente</option>,
-      <option value='em andamento'>em andamento</option>,
-      <option value='concluída'>concluída</option>,
+    const options = `
+      <option value="pendente">pendente</option>
+      <option value='em andamento'>em andamento</option>
+      <option value='concluída'>concluída</option>
     `;
 
     const select = createElement('select', '', options);
@@ -99,8 +100,10 @@ const createRow = (task) => {
 
     select.addEventListener('change', ({target}) => updateTask({ ...task, status: target.value }));
 
-    const editButton = createElement('button', '', '<span class="material-symbols-outlined">edit</span>');
+    const editButton = createElement('button','','<span class="material-symbols-outlined">edit</span>');
     const deleteButton = createElement('button', '', '<span class="material-symbols-outlined">delete</span>');
+
+    tdStatus.appendChild(select);
 
     //Criação de um formulário
     const editForm = createElement('form');
@@ -126,7 +129,7 @@ const createRow = (task) => {
 
     deleteButton.addEventListener('click', () => deleteTask(id));
 
-    tdStatus.appendChild(select);
+    //tdStatus.appendChild(select);
     
     // Adicionar os botões nas colunas
     tdActions.appendChild(editButton);
@@ -137,6 +140,8 @@ const createRow = (task) => {
     tr.appendChild(tdStatus);
     tr.appendChild(tdActions);
 
+    tbody.appendChild(tr);
+    
     return tr;
 }
 //createRow(task)
