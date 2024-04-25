@@ -1,10 +1,10 @@
 [
     {
-        "nome": "admin",
+        "email": "admin@teste.com",
         "senha": "123"
     },
     {
-        "nome": "joao",
+        "email": "joao@teste.com",
         "senha": "123456"
     }
 ]

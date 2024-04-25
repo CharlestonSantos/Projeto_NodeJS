@@ -8,6 +8,7 @@ body {
 }
 
 .page {
+    margin-top: 5px;
     display: flex;
     flex-direction: column;
     align-items: center;

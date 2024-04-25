@@ -1,4 +1,3 @@
-
 const http = require('http');
 const path = require('path');
 
@@ -6,22 +5,19 @@ const express = require('express');
 const fs = require('fs');
 var session = require('express-session');
 
-
 const app = express();
 const server = http.createServer(app);
 
-
-
 app.use(express.json());
 app.use(express.urlencoded());
-app.use(session({ secret:'abc' }));
+app.use(session({ secret: 'abc' }));
 
 // configuraçoes
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 3001);
 
 
 // secção de login
-app.use('/frontend/*', (req, res, next) => {
+app.use('/frontend/views/nova_Task.html', (req, res, next) => {
   if (req.session.nome) {
     next();
   } else {
@@ -31,7 +27,7 @@ app.use('/frontend/*', (req, res, next) => {
 
 
 // artigos estaticos
-app.use(express.static(path.join(__dirname, 'views')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 //start do server
 server.listen(app.get('port'), () => {
@@ -43,7 +39,7 @@ server.listen(app.get('port'), () => {
 
 
 app.post('/login', (req, res) => {
-  const usuarioscad = fs.readFileSync('./usuarios.json');
+  const usuarioscad = fs.readFileSync('/backend/usuarios.json');
   const usuariosparse = JSON.parse(usuarioscad);
 
 
@@ -60,4 +56,3 @@ app.post('/login', (req, res) => {
   }
   res.send('falhou');
 });
-
